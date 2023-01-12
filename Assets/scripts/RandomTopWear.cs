@@ -21,7 +21,8 @@ public class RandomTopWear : MonoBehaviour
     private void Execute()
     {
         var randomID = Utils.ID2String(Random.Range(1, 20));
-        btnRandomTopWear.GetComponentInChildren<Text>().text = randomID;
+        btnRandomTopWear.GetComponentInChildren<Text>().text = "top: " + randomID;
+        
         var meshPath = String.Format("res/{0}/mesh_Top", randomID);
         top.sharedMesh = Resources.Load<Mesh>(meshPath);
         var materialPath = String.Format("res/{0}/mat_Top", randomID);
