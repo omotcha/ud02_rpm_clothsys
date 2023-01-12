@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Application = UnityEngine.Device.Application;
 using Object = UnityEngine.Object;
 
 namespace AvatarSysUtil
@@ -40,7 +41,8 @@ namespace AvatarSysUtil
 			if (target != null)
 			{
 				// omotcha: the component should be Wolf3D_XXXX and i want only XXXX
-				component = component.Split("_")[1];
+				var split = component.Split("_");
+				component = split[split.Length-1];
 				CollectComponent(target.GetComponent<SkinnedMeshRenderer>(), component);
 			}
 			else
@@ -64,7 +66,14 @@ namespace AvatarSysUtil
 			{
 				AssetDatabase.CreateFolder("Assets/res", _id);
 			}
+			
+			// create mesh assets
 			AssetDatabase.CreateAsset(Object.Instantiate(smr.sharedMesh), string.Format("Assets/res/{0}/mesh_{1}.asset", _id, tag));
+			
+			// create material assets
+			var mat = Object.Instantiate(smr.sharedMaterial);
+			AssetDatabase.CreateAsset(mat, string.Format("Assets/res/{0}/mat_{1}.asset", _id, tag));
+			
 		}
 	}
 }
