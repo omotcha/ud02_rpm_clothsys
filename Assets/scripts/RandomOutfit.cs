@@ -27,8 +27,10 @@ public class RandomOutfit : MonoBehaviour
         btnRandomOutfit.GetComponentInChildren<Text>().text = "outfit: " + randomID;
         
         var meshPath = String.Format("res/{0}/mesh_Body", randomID);
+        // meshPath = "res/04/mesh_Body";
         body.sharedMesh = Resources.Load<Mesh>(meshPath);
         var materialPath = String.Format("res/{0}/mat_Body", randomID);
+        // materialPath = "res/04/mat_Body";
         body.sharedMaterial = Resources.Load<Material>(materialPath);
         
         meshPath = String.Format("res/{0}/mesh_Top", randomID);
