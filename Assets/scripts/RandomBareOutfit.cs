@@ -23,18 +23,23 @@ public class RandomBareOutfit : MonoBehaviour
 
 	private void Execute()
 	{
-		int[] smrCompatibleList = {1, 6, 14};
-		var randomID = Utils.ID2String(smrCompatibleList[Random.Range(0,3)]);
+		int[] smrCompatibleList = {3,4,5};
+		var randomID = "br" + Utils.ID2String(smrCompatibleList[Random.Range(0,3)]);
+		// var randomID = Utils.ID2String(Random.Range(1, 20));
 		btnRandomOutfit.GetComponentInChildren<Text>().text = "outfit: " + randomID;
 
 		var meshPath = String.Format("res/{0}/mesh_Top", randomID);
 		top.sharedMesh = Resources.Load<Mesh>(meshPath);
 		var materialPath = String.Format("res/{0}/mat_Top", randomID);
 		top.sharedMaterial = Resources.Load<Material>(materialPath);
-        
+
 		meshPath = String.Format("res/{0}/mesh_Bottom", randomID);
 		bottom.sharedMesh = Resources.Load<Mesh>(meshPath);
 		materialPath = String.Format("res/{0}/mat_Bottom", randomID);
 		bottom.sharedMaterial = Resources.Load<Material>(materialPath);
+		
+		// GameObject newObj = Resources.Load<GameObject>(String.Format("models/{0}", randomID));
+		// top.bones = Utils.GetNewBones(top, newObj.GetComponentInChildren<SkinnedMeshRenderer>());
+		// bottom.bones = Utils.GetNewBones(bottom, newObj.GetComponentInChildren<SkinnedMeshRenderer>());
 	}
 }

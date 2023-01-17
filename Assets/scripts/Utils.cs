@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System.Linq;
 
 namespace AvatarSysUtil
 {
@@ -29,6 +30,12 @@ namespace AvatarSysUtil
 			{
 				return id.ToString();
 			}
+		}
+
+		public static Transform[] GetNewBones(SkinnedMeshRenderer root, SkinnedMeshRenderer source)
+		{
+			return root.bones
+				.Where(x => source.bones.Select(s => s.name).Contains(x.name)).ToArray();
 		}
 	}
 	
