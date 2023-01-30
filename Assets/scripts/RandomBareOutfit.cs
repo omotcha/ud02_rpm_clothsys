@@ -14,7 +14,7 @@ public class RandomBareOutfit : MonoBehaviour
 	[SerializeField] private SkinnedMeshRenderer top;
 
 	[SerializeField] private SkinnedMeshRenderer bottom;
-    
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -23,9 +23,7 @@ public class RandomBareOutfit : MonoBehaviour
 
 	private void Execute()
 	{
-		int[] smrCompatibleList = {3,4,5};
-		var randomID = "br" + Utils.ID2String(smrCompatibleList[Random.Range(0,3)]);
-		// var randomID = Utils.ID2String(Random.Range(1, 20));
+		var randomID = "br" + Utils.ID2String(Random.Range(1, 3));
 		btnRandomOutfit.GetComponentInChildren<Text>().text = "outfit: " + randomID;
 
 		var meshPath = String.Format("res/{0}/mesh_Top", randomID);
@@ -41,5 +39,15 @@ public class RandomBareOutfit : MonoBehaviour
 		// GameObject newObj = Resources.Load<GameObject>(String.Format("models/{0}", randomID));
 		// top.bones = Utils.GetNewBones(top, newObj.GetComponentInChildren<SkinnedMeshRenderer>());
 		// bottom.bones = Utils.GetNewBones(bottom, newObj.GetComponentInChildren<SkinnedMeshRenderer>());
+		
+	}
+
+	private void Update()
+	{
+		Mesh mesh1 = new Mesh();
+		top.BakeMesh(mesh1);
+
+		Mesh mesh2 = new Mesh();
+		body.BakeMesh(mesh2);
 	}
 }

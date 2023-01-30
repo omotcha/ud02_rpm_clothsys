@@ -8,7 +8,7 @@ public class ModelResExtractorTrigger : MonoBehaviour
 {
     private string[] _ids;
 
-    private string[] _components = { "Wolf3D_Body"};
+    private string[] _components = {"Wolf3D_Head", "Wolf3D_Body", "Wolf3D_Outfit_Top", "Wolf3D_Outfit_Bottom", "Wolf3D_Outfit_Footwear"};
     // {
     //     "Wolf3D_Head", "Wolf3D_Body", "Wolf3D_Outfit_Top", "Wolf3D_Outfit_Bottom", "Wolf3D_Outfit_Footwear",
     //     "Wolf3D_Glasses", "Wolf3D_Hair", "Wolf3D_Headwear"
@@ -21,7 +21,7 @@ public class ModelResExtractorTrigger : MonoBehaviour
         // {
         //     _ids[i] = Utils.ID2String(i + 1);
         // }
-        _ids = new[] { "br4" };
+        _ids = new[] { "br02" };
 
         foreach(var id in _ids){
             var extractor = new ModelResExtractor(id,string.Format("models/{0}", id));
